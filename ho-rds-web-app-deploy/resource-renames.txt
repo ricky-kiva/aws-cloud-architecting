@@ -1,0 +1,13 @@
+dicoding-tutorial -> ho-db-dcd-vpc
+
+dicoding-tutorial-subnet-private2-ap-southeast-1b -> ho-db-dcd-subnet-private2-ap-southeast-1b
+
+dicoding-tutorial-securitygroup -> ho-db-dcd-securitygroup
+
+dicoding-tutorial-db-securitygroup -> ho-db-dcd-db-securitygroup
+
+dicoding-tutorial-db-subnet-group -> ho-db-dcd-db-subnet-group
+
+dicoding-tutorial-db-instance -> ho-db-dcd-db-instance-1
+
+dicoding-tutorial-web-server -> ho-db-dcd-web-server

@@ -1,0 +1,51 @@
+1. Create VPC 1 (VPC-A)
+2. Create Internet Gateway (VPC-A-IGW)
+3. Attach `VPC-A-IGW` to `VPC-A`
+
+4. Create Public Subnet for `VPC-A` (VPC-A-Subnet-Public)
+5. Create Route Table for `VPC-A-Subnet-Public` (VPC-A-RT-Public)
+6. Add Tag to `VPC-A-RT-Public` (VPC-A-RT-Public)
+7. Add `VPC-A-RT-Public` a route to `VPC-A-IGW`
+8. Associate `VPC-A-RT-Public` to `VPC-A-Subnet-Public`
+
+9. Create Private Subnet for `VPC-A` (VPC-A-Subnet-Private)
+10. Create Route Table for `VPC-A-Subnet-Private` (VPC-A-RT-Private)
+11. Associate `VPC-A-RT-Private` to `VPC-A-Subnet-Private`
+
+12. Launch EC2 Instance on `VPC-A-Subnet-Public` (VPC-A-EC2-Public)
+13. Launch EC2 Instance on `VPC-A-Subnet-Private` (VPC-A-EC2-Private)
+
+[//]: # (END OF VPC-A CREATION)
+
+14. Create VPC 2 (VPC-B)
+15. Create Private Subnet for `VPC-B` (VPC-B-Subnet-Private)
+16. Create Route Table for `VPC-B-Subnet-Private` (VPC-B-RT-Private)
+17. Associate Route `VPC-B-RT-Private` with `VPC-B-Subnet-Private`
+
+18. Launch EC2 Instance on `VPC-B-Subnet-Private` (VPC-B-EC2-Private)
+
+19. SSH to `VPC-A-EC2-Public` in dir. where the keypair (.pem) file located
+20. SSH to `VPC-A-EC2-Private` using Private IPv4 Address
+- if failed, create keypair file on `VPC-A-EC2-Public`
+- change keypair file permission to 400
+- re-SSH
+
+21. SSH & Ping to `VPC-B-EC2-Private` using Private IPv4 Address
+- if failed, do connection peering as step-22 first
+
+22. Create Peering Connection between VPC-A (Requester) & VPC-B (Accepter) (VPC-A-VPC-B-Peering)
+23. Accept created VPC Peering Request
+
+24. Apply Peering Connection from Route Tables on `VPC-A-RT-Private` to `VPC-B-Subnet-Private` CIDR IP
+25. Apply Peering Connection from Route Tables on `VPC-B-RT-Private` to `VPC-A-Subnet-Private` CIDR IP
+
+26. Test Ping to `VPC-B-EC2-Private` from `VPC-A-EC2-Private`
+- If following the step above, this should work
+
+27. SSH to `VPC-B-EC2-Private` using Private IPv4 Address
+- if failed, create keypair file on `VPC-A-EC2-Private`
+- change keypair file permission to 400
+- re-SSH
+
+28. Test Ping to `VPC-A-EC2-Private` from `VPC-B-EC2-Private`
+- if failed, configure security group `VPC-A-SG-Private` to allow inbound rules type All ICMP IPv4 to source of `VPC-B-Subnet-Private` CIDR IP

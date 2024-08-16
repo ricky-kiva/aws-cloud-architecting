@@ -1,0 +1,28 @@
+1. Enter EC2 Dashboard
+2. Create Load Balancer (ho-avail-alb)
+3. Create new security groups (ho-avail-sg-alb)
+4. Create Target Group on `Listeners & Routing / Listener HTTP:80` (ho-avail-target-group)
+5. Add tag to Load Balancer as `HO High Availability Load Balancer`
+
+---
+
+6. Create Security Group (ho-avail-sg-server)
+- Add SSH & HTTP rule to Inbound Rules
+- Add tag to security group as `Allow SSH & HTTP`
+
+7. Create Auto Scaling Group (ho-avail-asg)
+8. Create Launch Template (ho-avail-launch-template)
+9. In Auto Scaling Group, refresh launch template, then choose `ho-avail-launch-template`
+10. On step 2, choose `VPC Default` & 2 subnet, `1a` & `1b`
+11. Attach `ho-avail-target-group` as existing load balancer
+12. Change desired, min desired, max desired capacity to `2`
+13. Add tag as `EC2 Auto Scaling`
+
+---
+
+14. Open DNS name of `ho-avail-alb`. It should work
+15. Create simple HTML with different context on `/var/www/html/` of instance 1 & 2
+- Test it. It should work
+16. Go to `ho-avail-target-group` Dasboard
+17. Try to terminate instance 2
+- New instance will be created automatically

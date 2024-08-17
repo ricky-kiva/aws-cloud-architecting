@@ -1,0 +1,6 @@
+*note(important): change the variable names on any YAML too
+
+vpc-alb-app-db.yaml -> ho-cf-adep-vpc-server-db.yaml
+WebApp1-VPC -> ho-adep-stack-server-VPC
+staticwebapp.yaml -> ho-cf-adep-static-web.yaml
+CloudFormationLab -> ho-cf-adep-stack-static-web

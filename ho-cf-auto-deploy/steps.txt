@@ -1,0 +1,13 @@
+*note(important): change the variable names on any YAML too
+
+1. Create CloudFormation by ready template (ho-cf-adep-vpc-server-db.yaml)
+2. Input stack name for VPC stack (ho-adep-stack-server-VPC)
+3. Create new stack for the web by ready template (ho-cf-adep-static-web.yaml)
+4. Input stack name for the web stack (ho-cf-adep-stack-static-web)
+5. Open `ho-cf-adep-stack-static-web` stack -> outputs -> open url (should be accessible)
+
+---
+
+6. Add code in `ho-cf-adep-s3-custom.yaml` to `ho-cf-adep-static-web.yaml` after the `RecommendationServiceEnabled` section
+7. Update `ho-cf-adep-stack-static-web` with the modified `ho-cf-adep-static-web.yaml` by REPLACE current template
+8. Check `ho-cf-adep-stack-static-web` tab Resources. `MyS3Bucket` will be added

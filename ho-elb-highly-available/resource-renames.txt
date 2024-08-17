@@ -1,11 +1,11 @@
-X *vpc-default -> VPC-A-vpc
-(don't forget to enable auto-assign IPv4 public DNS on each subnets)
+*vpc-default -> VPC-A-vpc
+(Remember to enable auto-assign IPv4 public DNS on each subnet)
 
-X dicoding-lb -> ho-avail-alb
+dicoding-lb -> ho-avail-alb
 Load-Balancer-SG -> ho-avail-sg-alb
-X dicoding-target-group -> ho-avail-target-group
-X dicoding-security-group-server -> ho-avail-sg-server
-X dicoding-auto-scaling-group -> ho-avail-asg
+dicoding-target-group -> ho-avail-target-group
+dicoding-security-group-server -> ho-avail-sg-server
+dicoding-auto-scaling-group -> ho-avail-asg
 dicoding-launch-template -> ho-avail-launch-template
 
 *note: not available in the course. make it by yourself to replace default VPC

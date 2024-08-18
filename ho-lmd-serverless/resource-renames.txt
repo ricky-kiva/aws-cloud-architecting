@@ -1,0 +1,19 @@
+Load-Inventory (on IAM) -> ho-srvl-iam-load-inventory
+Check-Stock (on IAM) -> ho-srvl-iam-check-stock
+
+Load-Inventory (on Lambda) -> ho-srvl-lmd-load-inventory
+lambda_function.py (for Load-Inventory) -> ho-srvl-func-load-inventory.py
+
+inventory-66035 -> ho-srvl-s3-inventory-66035
+Load-Inventory (on S3) -> ho-srvl-s3-notif-load-inventory
+
+Inventory (DynamoDB) -> Inventory
+
+inventory-medan.csv -> ho-srvl-inventory-medan.csv
+
+NoStock -> ho-srvl-sns-no-stock
+
+Check-Stock (on Lambda) -> ho-srvl-lmd-check-stock
+lambda_function.py (for Check-Stock) -> ho-srvl-func-check-stock.py
+
+inventory-makassar.csv -> ho-srvl-inventory-makassar.csv

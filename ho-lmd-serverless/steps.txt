@@ -1,0 +1,32 @@
+1. Create IAM Role for Lambda Service with permissions:
+- AmazonDynamoDBFullAccess
+- AmazonS3ReadOnlyAccess
+(ho-srvl-iam-load-inventory)
+2. Create IAM Role for Lambda Service with permissions:
+- AWSLambdaDynamoDBExecutionRole
+- AmazonSNSFullAccess
+(ho-srvl-iam-check-stock)
+
+3. Create Lambda function from scratch (ho-srvl-lmd-load-inventory)
+4. Choose existing role `ho-srvl-iam-load-inventory`
+5. Deploy `ho-srvl-func-load-inventory.py` to `ho-srvl-lmd-load-inventory`
+
+6. Create S3 Bucket (ho-srvl-s3-inventory-66035)
+7. Add Event Notification with "All Object Create Events" (ho-srvl-s3-notif-load-inventory)
+8. Adjust `ho-srvl-lmd-load-inventory` as destination
+
+9. Create DynamoDB and the Table (Inventory)
+
+10. Upload `ho-srvl-inventory-medan.csv` to S3
+11. Check DynamoDB Tables, there should contain items
+
+12. Create Amazon SNS (ho-srvl-sns-no-stock)
+13. Create Subscription for Email
+14. Check the endpoint email, there should be subscription confirmation
+
+15. Create Lambda function from scratch (ho-srvl-lmd-check-stock)
+16. Choose existing role `ho-srvl-iam-check-stock`
+17. Deploy `ho-srvl-func-load-inventory.py` to `ho-srvl-lmd-check-stock`
+18. Add DynamoD with corresponding table as trigger
+
+19. Upload `ho-srvl-inventory-makassar.csv` to `ho-srvl-s3-inventory-66035`
